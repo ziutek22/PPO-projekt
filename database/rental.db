@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS clients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    surname TEXT NOT NULL,
+    phone TEXT NOT NULL UNIQUE,
+    email TEXT
+);
+
+CREATE TABLE IF NOT EXISTS cars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    brand TEXT NOT NULL,
+    model TEXT NOT NULL,
+    productionYear INTEGER NOT NULL,
+    fuelType TEXT NOT NULL,
+    price REAL NOT NULL,
+    plates TEXT NOT NULL,
+    isAvailable INTEGER NOT NULL CHECK (isAvailable IN (0,1))
+);
+
+CREATE TABLE IF NOT EXISTS rentals (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    client_id INTEGER NOT NULL,
+    car_id INTEGER NOT NULL,
+    rentDate TEXT NOT NULL,
+    returnDate TEXT NOT NULL,
+    FOREIGN KEY (client_id) REFERENCES clients(id),
+    FOREIGN KEY (car_id) REFERENCES cars(id)
+);
