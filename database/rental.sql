@@ -1,8 +1,9 @@
 CREATE TABLE IF NOT EXISTS clients (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    phone TEXT NOT NULL UNIQUE
+    name TEXT NOT NULL,
+    surname TEXT NOT NULL,
+    phone TEXT NOT NULL UNIQUE,
+    email TEXT
 );
 
 CREATE TABLE IF NOT EXISTS cars (

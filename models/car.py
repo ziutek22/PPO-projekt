@@ -1,40 +1,42 @@
-from vehicle import Vehicle
+from models.vehicle import Vehicle
 
 class Car(Vehicle):
-    def __init__(self, brand, model, productionYear, fuelType, isAvailable, price, plates):
-        super().__init__(brand, model, productionYear)
-        self._fuelType = fuelType
-        self._isAvailable = isAvailable
-        self._price = price
+    def __init__(
+        self,
+        brand: str,
+        model: str,
+        production_year: int,
+        fuel_type: str,
+        is_available: bool,
+        price_per_day: float,
+        plates: str
+    ):
+        super().__init__(brand, model, production_year)
+        self._fuel_type = fuel_type
+        self._is_available = is_available
+        self._price_per_day = price_per_day
         self._plates = plates
 
-    def set_fuel(self, fuel: str):
-        self._fuelType = fuel
+    def set_fuel(self, fuel: str) -> None:
+        self._fuel_type = fuel
 
-    def set_availability(self, status: bool):
-        self._isAvailable = status
-    
-    def set_price(self, money: float):
-        self._price = money
+    def set_availability(self, status: bool) -> None:
+        self._is_available = bool(status)
 
-    def set_plates(self, plateNumber: str):
-        self._plates = plateNumber
+    def set_price(self, price_per_day: float) -> None:
+        self._price_per_day = float(price_per_day)
 
-    def get_fuel(self):
-        return self._fuelType
-    
-    def get_availability(self):
-        return self._isAvailable
-    
-    def get_price(self):
-        return self._price
-    
-    def get_plates(self):
+    def set_plates(self, plates: str) -> None:
+        self._plates = plates
+
+    def get_fuel(self) -> str:
+        return self._fuel_type
+
+    def get_availability(self) -> bool:
+        return self._is_available
+
+    def get_price(self) -> float:
+        return float(self._price_per_day)
+
+    def get_plates(self) -> str:
         return self._plates
-
-    def get_info(self):
-        return (
-            f"Twój samochód to {self._brand} {self._model} o numerach rejestracyjnych {self._plates}\n"
-            f"Utworzony w {self._productionYear}\n"
-            f"Koszt wynajmu to {self._price} a dostępność {self._isAvailable}\n"
-        )

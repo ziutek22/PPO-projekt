@@ -1,23 +1,23 @@
 class Vehicle:
-    def __init__(self, brand, model, productionYear):
+    def __init__(self, brand: str, model: str, production_year: int):
         self._brand = brand
         self._model = model
-        self._productionYear = productionYear
+        self._production_year = production_year
 
-    def set_brand(self, setBrand: str):
-        self._brand = setBrand
+    def set_brand(self, brand: str) -> None:
+        self._brand = brand
 
-    def set_model(self, setModel: str):
-        self._model = setModel
-    
-    def set_year(self, year: float):
-        self._productionYear = year
+    def set_model(self, model: str) -> None:
+        self._model = model
 
-    def get_brand(self):
+    def set_year(self, year: int) -> None:
+        self._production_year = year
+
+    def get_brand(self) -> str:
         return self._brand
-    
-    def get_model(self):
+
+    def get_model(self) -> str:
         return self._model
-    
-    def get_year(self):
-        return self._productionYear
+
+    def get_year(self) -> int:
+        return self._production_year
